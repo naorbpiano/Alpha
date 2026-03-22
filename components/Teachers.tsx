@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SectionHeader from "./SectionHeader";
 
 export default function Teachers() {
@@ -7,10 +8,17 @@ export default function Teachers() {
         <SectionHeader eyebrow="הצוות שלנו" title="המורה שלנו" />
 
         <div className="gold-glow-card bg-ivory rounded-3xl overflow-hidden border border-gold/15 flex flex-col md:flex-row">
-          {/* Photo placeholder */}
-          <div className="bg-piano-dark md:w-72 min-h-72 flex-shrink-0 flex items-center justify-center relative overflow-hidden">
-            <div className="text-8xl opacity-80">🎹</div>
-            <div className="absolute inset-0 bg-gradient-to-t from-piano-black/50 to-transparent" />
+          {/* Photo */}
+          <div className="bg-piano-dark md:w-72 min-h-72 flex-shrink-0 relative overflow-hidden">
+            <Image
+              src="https://i.postimg.cc/dtNY3pwC/tmwnh.jpg"
+              alt="נאור — מייסד ומורה ראשי באלפא קליד"
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 288px"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-piano-black/40 to-transparent" />
           </div>
 
           {/* Info */}
