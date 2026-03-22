@@ -6,6 +6,7 @@ import Teachers from "@/components/Teachers";
 import Methodology from "@/components/Methodology";
 import SmallWins from "@/components/SmallWins";
 import LocationHours from "@/components/LocationHours";
+import Lectures from "@/components/Lectures";
 import Gallery from "@/components/Gallery";
 import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
@@ -23,6 +24,7 @@ export default function Home() {
         <Methodology />
         <SmallWins />
         <LocationHours />
+        <Lectures />
         <Gallery />
         <Testimonials />
         <ContactForm />

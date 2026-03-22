@@ -4,10 +4,10 @@ import { useState } from "react";
 
 const links = [
   { href: "#about", label: "אודות" },
-  { href: "#teachers", label: "המורים" },
   { href: "#methodology", label: "השיטה" },
   { href: "#small-wins", label: "הצלחות קטנות" },
   { href: "#location", label: "מיקום ושעות" },
+  { href: "#lectures", label: "הרצאות" },
   { href: "#gallery", label: "גלריה" },
   { href: "#testimonials", label: "המלצות" },
   { href: "#contact", label: "צור קשר" },
@@ -21,7 +21,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
         {/* Logo / School Name */}
         <a href="#hero" className="text-gold font-bold text-xl tracking-wide">
-          🎹 בית הספר לפסנתר
+          🎹 אלפא קליד
         </a>
 
         {/* Desktop nav */}

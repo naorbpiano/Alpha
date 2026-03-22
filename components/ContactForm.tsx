@@ -33,7 +33,7 @@ export default function ContactForm() {
             קיבלנו את הפרטים שלך!
           </h2>
           <p className="text-warm-gray text-lg">
-            ניצור איתך קשר תוך יום עסקים לתיאום שיעור ניסיון חינם. מחכים לפגוש אתכם!
+            נאור יחזור אליך בהקדם לתיאום פגישת המפתח הפדגוגית. מחכים לפגוש אתכם!
           </p>
         </div>
       </section>
@@ -51,7 +51,7 @@ export default function ContactForm() {
             השאר פרטים
           </h2>
           <p className="mt-3 text-warm-gray text-lg">
-            השאירו פרטים ונחזור אליכם לתיאום שיעור ניסיון חינם ללא התחייבות.
+            השאירו פרטים ונאור יחזור אליכם לתיאום פגישת המפתח הפדגוגית — בעלות סמלית, ללא התחייבות.
           </p>
           <div className="mt-4 mx-auto w-16 h-1 bg-gold rounded-full" />
         </div>
@@ -116,10 +116,10 @@ export default function ContactForm() {
                 className="w-full bg-warm-white border border-gold/20 rounded-xl px-4 py-2.5 text-piano-black focus:outline-none focus:border-gold transition-colors"
               >
                 <option value="">בחר גיל</option>
-                <option value="5-7">5–7</option>
-                <option value="8-10">8–10</option>
-                <option value="11-13">11–13</option>
-                <option value="14+">14+</option>
+                <option value="7-8">7–8</option>
+                <option value="9-11">9–11</option>
+                <option value="12-14">12–14</option>
+                <option value="15-16">15–16</option>
               </select>
             </div>
           </div>
@@ -142,7 +142,7 @@ export default function ContactForm() {
             type="submit"
             className="w-full bg-gold text-piano-black font-bold py-3.5 rounded-xl text-lg hover:bg-gold-light transition-colors duration-200 shadow-sm"
           >
-            שלח פרטים — שיעור ניסיון חינם
+            שלח פרטים — לקביעת פגישת המפתח
           </button>
 
           <p className="text-warm-gray text-xs text-center">

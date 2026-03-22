@@ -33,10 +33,9 @@ export default function LocationHours() {
               </div>
             </div>
             <div className="p-5">
-              <p className="text-piano-black font-semibold text-lg">📍 כתובת בית הספר</p>
-              <p className="text-warm-gray mt-1">רחוב המוסיקה 1, תל אביב</p>
-              <p className="text-warm-gray text-sm mt-1">
-                נגיש בתחבורה ציבורית · חניה בסביבה
+              <p className="text-piano-black font-semibold text-lg">📍 פתח תקווה</p>
+              <p className="text-warm-gray mt-1 text-sm">
+                הכתובת המדויקת תימסר לאחר ההרשמה
               </p>
             </div>
           </div>
@@ -66,7 +65,7 @@ export default function LocationHours() {
               ))}
             </div>
             <div className="mt-5 bg-gold/10 rounded-xl p-4 text-sm text-warm-gray">
-              📞 לתיאום שיעור ניסיון חינם — צרו קשר עוד היום
+              📩 השאר פרטים ונאור יחזור אליך לתיאום פגישת המפתח
             </div>
           </div>
         </div>

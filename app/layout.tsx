@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "בית הספר לפסנתר",
-  description: "בית ספר לפסנתר לילדים ונוער – שיטה ייחודית, מורים מקצועיים, ואהבה אמיתית למוסיקה",
+  title: "אלפא קליד | בית ספר לפסנתר לילדים ונוער — פתח תקווה",
+  description: "אלפא קליד — בית ספר לפסנתר לילדים ונוער גיל 7–16 בפתח תקווה. שיעורים פרטניים, כל סגנון, גישת הצלחות קטנות. קביעת פגישת מפתח בעלות סמלית.",
 };
 
 export default function RootLayout({
