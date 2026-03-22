@@ -1,74 +1,77 @@
+import SectionHeader from "./SectionHeader";
+
 const testimonials = [
   {
     name: "דנה ואבי כהן",
     role: "הורים של יובל, גיל 9",
-    quote:
-      "מאז שיובל התחיל ללמוד כאן, הוא רץ לשיעורים. לא מאמינים שילד יכול לאהוב תרגול — עד שראינו את זה קורה.",
-    stars: 5,
+    quote: "מאז שיובל התחיל ללמוד כאן, הוא רץ לשיעורים. לא מאמינים שילד יכול לאהוב תרגול — עד שראינו את זה קורה.",
   },
   {
     name: "מיכל לוי",
     role: "אמא של רוני, גיל 7",
-    quote:
-      "שיעור הניסיון שינה הכל. רוני יצאה משם עם חיוך מאוזן לאוזן ושיר בראש. מאז לא פסק.",
-    stars: 5,
+    quote: "שיעור הניסיון שינה הכל. רוני יצאה משם עם חיוך מאוזן לאוזן ושיר בראש. מאז לא פסק.",
   },
   {
     name: "ראובן ושרה שפירא",
     role: "הורים של תמר, גיל 13",
-    quote:
-      "תמר לומדת שלוש שנים כבר. ההתקדמות מדהימה, אבל מה שיותר חשוב — הביטחון העצמי שלה בכלל צמח.",
-    stars: 5,
+    quote: "תמר לומדת שלוש שנים כבר. ההתקדמות מדהימה, אבל מה שיותר חשוב — הביטחון העצמי שלה בכלל צמח.",
   },
   {
     name: "ליאת גולדברג",
     role: "אמא של אדם, גיל 10",
-    quote:
-      "הצוות כאן מדהים. הם מכירים כל ילד אישית, יודעים מה מניע אותו, ויודעים איך לחגוג איתו כשמצליח.",
-    stars: 5,
+    quote: "הצוות כאן מדהים. הם מכירים כל ילד אישית, יודעים מה מניע אותו, ויודעים איך לחגוג איתו כשמצליח.",
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-20 bg-piano-black">
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="text-center mb-14">
-          <p className="text-gold uppercase tracking-widest text-sm font-semibold mb-2">
-            מה אומרים עלינו
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-warm-white">
-            המלצות
-          </h2>
-          <div className="mt-4 mx-auto w-16 h-1 bg-gold rounded-full" />
-        </div>
+    <section id="testimonials" className="py-24 bg-piano-black relative overflow-hidden">
+      {/* Ambient background */}
+      <div
+        className="absolute inset-0 opacity-15 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 60% 50% at 70% 30%, rgba(201,168,76,0.15) 0%, transparent 70%)",
+        }}
+      />
 
-        <div className="grid sm:grid-cols-2 gap-6">
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
+        <SectionHeader
+          eyebrow="מה אומרים עלינו"
+          title="המלצות"
+          light
+        />
+
+        <div className="grid sm:grid-cols-2 gap-7">
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="bg-piano-dark rounded-2xl p-7 border border-gold/10 hover:border-gold/30 transition-colors"
+              className="gold-glow-card bg-piano-dark rounded-2xl p-8 border border-gold/10 relative"
             >
+              {/* Large quote mark */}
+              <span className="absolute top-5 right-6 text-gold/15 text-6xl font-serif leading-none select-none">
+                &ldquo;
+              </span>
+
               {/* Stars */}
-              <div className="flex gap-0.5 mb-4">
-                {Array.from({ length: t.stars }).map((_, i) => (
-                  <span key={i} className="text-gold">★</span>
+              <div className="flex gap-0.5 mb-5 relative z-10">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span key={i} className="text-gold text-lg">★</span>
                 ))}
               </div>
 
               {/* Quote */}
-              <p className="text-ivory/80 text-base leading-relaxed mb-5">
-                &ldquo;{t.quote}&rdquo;
+              <p className="text-ivory/75 text-base leading-relaxed mb-6 relative z-10">
+                {t.quote}
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center text-gold font-bold text-sm">
+              <div className="flex items-center gap-3 relative z-10">
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center text-gold font-bold text-sm border border-gold/20">
                   {t.name.charAt(0)}
                 </div>
                 <div>
                   <p className="text-warm-white font-semibold text-sm">{t.name}</p>
-                  <p className="text-ivory/40 text-xs">{t.role}</p>
+                  <p className="text-ivory/35 text-xs">{t.role}</p>
                 </div>
               </div>
             </div>

@@ -1,21 +1,25 @@
 export default function Footer() {
   return (
-    <footer className="bg-piano-black text-ivory/70 py-12">
+    <footer className="bg-piano-black text-ivory/60 pt-16 pb-8 relative overflow-hidden">
+      {/* Subtle top gold line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+
       <div className="max-w-5xl mx-auto px-6">
-        <div className="grid sm:grid-cols-3 gap-8 mb-10">
+        <div className="grid sm:grid-cols-3 gap-10 mb-12">
           {/* Brand */}
           <div>
-            <h3 className="text-gold font-bold text-xl mb-3">🎹 אלפא קליד</h3>
+            <h3 className="text-gold font-black text-2xl mb-4">🎹 אלפא קליד</h3>
             <p className="text-sm leading-relaxed">
               בית ספר לפסנתר לילדים ונוער בפתח תקווה.
+              <br />
               מעצימים כל ילד — הצלחה אחר הצלחה.
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h4 className="text-warm-white font-semibold mb-3">ניווט מהיר</h4>
-            <ul className="space-y-2 text-sm">
+            <h4 className="text-warm-white font-semibold mb-4">ניווט מהיר</h4>
+            <ul className="space-y-2.5 text-sm">
               {[
                 ["#about", "אודות"],
                 ["#methodology", "השיטה"],
@@ -25,7 +29,10 @@ export default function Footer() {
                 ["#contact", "צור קשר"],
               ].map(([href, label]) => (
                 <li key={href}>
-                  <a href={href} className="hover:text-gold transition-colors">
+                  <a
+                    href={href}
+                    className="hover:text-gold transition-colors duration-200"
+                  >
                     {label}
                   </a>
                 </li>
@@ -35,12 +42,12 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-warm-white font-semibold mb-3">יצירת קשר</h4>
-            <ul className="space-y-2 text-sm">
+            <h4 className="text-warm-white font-semibold mb-4">יצירת קשר</h4>
+            <ul className="space-y-2.5 text-sm">
               <li>
                 <a
                   href="mailto:naorbpiano@gmail.com"
-                  className="hover:text-gold transition-colors"
+                  className="hover:text-gold transition-colors duration-200"
                 >
                   📧 naorbpiano@gmail.com
                 </a>
@@ -48,34 +55,33 @@ export default function Footer() {
               <li>📍 פתח תקווה</li>
             </ul>
             {/* Social icons */}
-            <div className="flex gap-4 mt-4">
-              <a
-                href="#"
-                className="hover:text-gold transition-colors text-xl"
-                aria-label="Facebook"
-              >
-                📘
-              </a>
-              <a
-                href="#"
-                className="hover:text-gold transition-colors text-xl"
-                aria-label="Instagram"
-              >
-                📸
-              </a>
-              <a
-                href="https://wa.me/"
-                className="hover:text-gold transition-colors text-xl"
-                aria-label="WhatsApp"
-              >
-                💬
-              </a>
+            <div className="flex gap-4 mt-5">
+              {[
+                { href: "#", label: "Facebook", icon: "📘" },
+                { href: "#", label: "Instagram", icon: "📸" },
+                { href: "https://wa.me/", label: "WhatsApp", icon: "💬" },
+              ].map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  className="w-10 h-10 rounded-full border border-gold/15 flex items-center justify-center hover:border-gold/50 hover:bg-gold/5 transition-all duration-300 text-lg"
+                  aria-label={s.label}
+                >
+                  {s.icon}
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        <div className="border-t border-ivory/10 pt-6 text-center text-xs text-ivory/40">
-          © {new Date().getFullYear()} אלפא קליד · כל הזכויות שמורות
+        {/* Bottom bar */}
+        <div className="border-t border-ivory/8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-ivory/30">
+            © {new Date().getFullYear()} אלפא קליד · כל הזכויות שמורות
+          </p>
+          <p className="text-xs text-ivory/20">
+            עוצב עם ♪ ואהבה
+          </p>
         </div>
       </div>
     </footer>

@@ -1,6 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import SectionHeader from "./SectionHeader";
+
+const inputClass =
+  "w-full bg-warm-white border border-gold/15 rounded-xl px-4 py-3 text-piano-black placeholder:text-warm-gray/50 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/10 transition-all duration-300";
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -20,20 +24,20 @@ export default function ContactForm() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // TODO: connect to backend / email service
     setSubmitted(true);
   }
 
   if (submitted) {
     return (
-      <section id="contact" className="py-20 bg-warm-white">
+      <section id="contact" className="py-24 bg-warm-white">
         <div className="max-w-xl mx-auto px-6 text-center">
-          <div className="text-6xl mb-4">🎉</div>
-          <h2 className="text-2xl font-bold text-piano-black mb-3">
+          <div className="text-7xl mb-5 animate-[scale-in_0.5s_ease-out]">🎉</div>
+          <h2 className="text-3xl font-black text-gold-gradient inline-block mb-4">
             קיבלנו את הפרטים שלך!
           </h2>
-          <p className="text-warm-gray text-lg">
-            נאור יחזור אליך בהקדם לתיאום פגישת המפתח הפדגוגית. מחכים לפגוש אתכם!
+          <p className="text-warm-gray text-lg leading-relaxed">
+            נאור יחזור אליך בהקדם לתיאום פגישת המפתח הפדגוגית.
+            <br />מחכים לפגוש אתכם!
           </p>
         </div>
       </section>
@@ -41,28 +45,21 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-warm-white">
+    <section id="contact" className="py-24 bg-warm-white">
       <div className="max-w-2xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <p className="text-gold uppercase tracking-widest text-sm font-semibold mb-2">
-            מעוניינים?
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-piano-black">
-            השאר פרטים
-          </h2>
-          <p className="mt-3 text-warm-gray text-lg">
-            השאירו פרטים ונאור יחזור אליכם לתיאום פגישת המפתח הפדגוגית — בעלות סמלית, ללא התחייבות.
-          </p>
-          <div className="mt-4 mx-auto w-16 h-1 bg-gold rounded-full" />
-        </div>
+        <SectionHeader
+          eyebrow="מעוניינים?"
+          title="השאר פרטים"
+          subtitle="השאירו פרטים ונאור יחזור אליכם לתיאום פגישת המפתח הפדגוגית — בעלות סמלית, ללא התחייבות."
+        />
 
         <form
           onSubmit={handleSubmit}
-          className="bg-ivory rounded-2xl shadow-sm border border-gold/10 p-8 space-y-5"
+          className="gold-glow-card bg-ivory rounded-3xl border border-gold/10 p-9 sm:p-10 space-y-6"
         >
           <div className="grid sm:grid-cols-2 gap-5">
             <div>
-              <label className="block text-piano-black font-medium text-sm mb-1.5">
+              <label className="block text-piano-black font-semibold text-sm mb-2">
                 שם מלא *
               </label>
               <input
@@ -72,11 +69,11 @@ export default function ContactForm() {
                 onChange={handleChange}
                 required
                 placeholder="ישראל ישראלי"
-                className="w-full bg-warm-white border border-gold/20 rounded-xl px-4 py-2.5 text-piano-black placeholder:text-warm-gray/60 focus:outline-none focus:border-gold transition-colors"
+                className={inputClass}
               />
             </div>
             <div>
-              <label className="block text-piano-black font-medium text-sm mb-1.5">
+              <label className="block text-piano-black font-semibold text-sm mb-2">
                 טלפון *
               </label>
               <input
@@ -86,14 +83,14 @@ export default function ContactForm() {
                 onChange={handleChange}
                 required
                 placeholder="050-0000000"
-                className="w-full bg-warm-white border border-gold/20 rounded-xl px-4 py-2.5 text-piano-black placeholder:text-warm-gray/60 focus:outline-none focus:border-gold transition-colors"
+                className={inputClass}
               />
             </div>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-5">
             <div>
-              <label className="block text-piano-black font-medium text-sm mb-1.5">
+              <label className="block text-piano-black font-semibold text-sm mb-2">
                 אימייל
               </label>
               <input
@@ -102,18 +99,18 @@ export default function ContactForm() {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="example@email.com"
-                className="w-full bg-warm-white border border-gold/20 rounded-xl px-4 py-2.5 text-piano-black placeholder:text-warm-gray/60 focus:outline-none focus:border-gold transition-colors"
+                className={inputClass}
               />
             </div>
             <div>
-              <label className="block text-piano-black font-medium text-sm mb-1.5">
+              <label className="block text-piano-black font-semibold text-sm mb-2">
                 גיל הילד/ה
               </label>
               <select
                 name="age"
                 value={form.age}
                 onChange={handleChange}
-                className="w-full bg-warm-white border border-gold/20 rounded-xl px-4 py-2.5 text-piano-black focus:outline-none focus:border-gold transition-colors"
+                className={inputClass}
               >
                 <option value="">בחר גיל</option>
                 <option value="7-8">7–8</option>
@@ -125,7 +122,7 @@ export default function ContactForm() {
           </div>
 
           <div>
-            <label className="block text-piano-black font-medium text-sm mb-1.5">
+            <label className="block text-piano-black font-semibold text-sm mb-2">
               הערות / שאלות
             </label>
             <textarea
@@ -134,19 +131,19 @@ export default function ContactForm() {
               onChange={handleChange}
               rows={4}
               placeholder="ספרו לנו קצת על הילד/ה — ניסיון קודם, מה מעניין אותו/ה..."
-              className="w-full bg-warm-white border border-gold/20 rounded-xl px-4 py-2.5 text-piano-black placeholder:text-warm-gray/60 focus:outline-none focus:border-gold transition-colors resize-none"
+              className={`${inputClass} resize-none`}
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-gold text-piano-black font-bold py-3.5 rounded-xl text-lg hover:bg-gold-light transition-colors duration-200 shadow-sm"
+            className="w-full bg-gold text-piano-black font-black py-4 rounded-xl text-lg hover:bg-gold-light transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-gold/15 animate-[pulse-glow_4s_ease-in-out_infinite]"
           >
             שלח פרטים — לקביעת פגישת המפתח
           </button>
 
-          <p className="text-warm-gray text-xs text-center">
-            הפרטים שלכם שמורים אצלנו בלבד ולא יועברו לאף גורם שלישי.
+          <p className="text-warm-gray/60 text-xs text-center">
+            🔒 הפרטים שלכם שמורים אצלנו בלבד ולא יועברו לאף גורם שלישי.
           </p>
         </form>
       </div>

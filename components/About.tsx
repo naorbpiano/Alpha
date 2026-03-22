@@ -1,25 +1,19 @@
+import SectionHeader from "./SectionHeader";
+
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-warm-white">
+    <section id="about" className="py-24 bg-warm-white relative">
       <div className="max-w-5xl mx-auto px-6">
-        {/* Section header */}
-        <div className="text-center mb-14">
-          <p className="text-gold uppercase tracking-widest text-sm font-semibold mb-2">
-            אודות
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-piano-black">
-            אודות בית הספר
-          </h2>
-          <div className="mt-4 mx-auto w-16 h-1 bg-gold rounded-full" />
-        </div>
+        <SectionHeader eyebrow="אודות" title="אודות אלפא קליד" />
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-14 items-center">
           {/* Text */}
-          <div className="space-y-5 text-piano-dark leading-relaxed text-lg">
+          <div className="space-y-6 text-piano-dark leading-relaxed text-lg">
             <p>
-              אלפא קליד נוסד ב-2023 בפתח תקווה מתוך אמונה פשוטה אחת: כל ילד
+              <span className="text-gold font-bold text-2xl leading-none float-right ml-3 mt-1">א</span>
+              לפא קליד נוסד ב-2023 בפתח תקווה מתוך אמונה פשוטה אחת: כל ילד
               יכול ללמוד פסנתר — ולאהוב את זה. אנחנו לא מאמינים בלחץ, בצעקות
-              או בדרישה לשלמות. אנחנו מאמינים בעצמה.
+              או בדרישה לשלמות. אנחנו מאמינים בהעצמה.
             </p>
             <p>
               השיעורים אצלנו הם פרטניים בלבד, 45 דקות, בכל סגנון שמתאים לילד —
@@ -35,16 +29,17 @@ export default function About() {
           {/* Stats */}
           <div className="grid grid-cols-2 gap-6">
             {[
-              { number: "2023", label: "שנת הקמה" },
-              { number: "7–16", label: "גיל התלמידים" },
-              { number: "45′", label: "שיעור פרטני" },
-              { number: "2×", label: "הופעות בשנה" },
+              { number: "2023", label: "שנת הקמה", icon: "🏫" },
+              { number: "7–16", label: "גיל התלמידים", icon: "🎯" },
+              { number: "45′", label: "שיעור פרטני", icon: "⏱" },
+              { number: "2×", label: "הופעות בשנה", icon: "🎤" },
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="bg-ivory border border-gold/20 rounded-2xl p-6 text-center shadow-sm"
+                className="gold-glow-card bg-ivory border border-gold/15 rounded-2xl p-7 text-center"
               >
-                <div className="text-3xl font-bold text-gold mb-1">
+                <div className="text-2xl mb-2">{stat.icon}</div>
+                <div className="text-3xl sm:text-4xl font-black text-gold-gradient mb-1">
                   {stat.number}
                 </div>
                 <div className="text-warm-gray text-sm">{stat.label}</div>
