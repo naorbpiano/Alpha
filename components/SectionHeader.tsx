@@ -18,9 +18,7 @@ export default function SectionHeader({
 
       {/* Title with gold gradient */}
       <h2
-        className={`text-3xl sm:text-4xl lg:text-5xl font-black leading-tight ${
-          light ? "text-gold-gradient" : "text-gold-gradient"
-        }`}
+        className="font-display text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-gold-gradient"
       >
         {title}
       </h2>

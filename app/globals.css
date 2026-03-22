@@ -9,6 +9,10 @@
   --color-gold-dark: #a8883a;
   --color-warm-white: #fdfaf4;
   --color-warm-gray: #8a8070;
+  --font-heebo: var(--font-heebo);
+  --font-frank: var(--font-frank);
+  --font-family-heebo: var(--font-heebo), "Heebo", Arial, sans-serif;
+  --font-family-frank: var(--font-frank), "Frank Ruhl Libre", Georgia, serif;
 }
 
 :root {
@@ -23,7 +27,13 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, "Segoe UI", Tahoma, Geneva, sans-serif;
+  font-family: var(--font-heebo), "Heebo", Arial, sans-serif;
+  cursor: none;
+}
+
+/* Restore default cursor on touch devices */
+@media (pointer: coarse) {
+  body { cursor: auto; }
 }
 
 /* ── Animations ── */
@@ -142,4 +152,31 @@ body {
   background: inherit;
   clip-path: ellipse(55% 100% at 50% 100%);
   z-index: 1;
+}
+
+/* ── Display font (Frank Ruhl Libre) ── */
+.font-display {
+  font-family: var(--font-frank), "Frank Ruhl Libre", Georgia, serif;
+}
+
+/* ── Custom cursor ── */
+@keyframes cursor-appear {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Magnetic button ── */
+.magnetic-btn {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ── Cursor pointer hint for interactive elements ── */
+a, button, [role="button"], input, select, textarea, label {
+  cursor: none;
+}
+@media (pointer: coarse) {
+  a, button, [role="button"], input, select, textarea, label {
+    cursor: auto;
+  }
 }

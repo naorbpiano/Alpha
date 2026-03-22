@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import MagneticButton from "./MagneticButton";
 
 /* ── Black-key positions in standard keyboard pattern ── */
 const BLACK_KEY_AFTER = new Set([0, 1, 3, 4, 5, 7, 8, 10, 11, 12, 14, 15, 17, 18, 19, 21]);
@@ -132,7 +133,7 @@ export default function Hero() {
         </div>
 
         {/* Title with gold gradient shimmer */}
-        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black leading-none mb-5 text-gold-gradient">
+        <h1 className="font-display text-6xl sm:text-8xl lg:text-9xl font-black leading-none mb-5 text-gold-gradient tracking-tight">
           אלפא קליד
         </h1>
 
@@ -150,18 +151,22 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="#contact"
-            className="bg-gold text-piano-black font-bold px-10 py-4 rounded-full text-lg hover:bg-gold-light transition-all duration-300 shadow-lg animate-[pulse-glow_3s_ease-in-out_infinite]"
-          >
-            קביעת פגישת מפתח חינם
-          </a>
-          <a
-            href="#about"
-            className="border border-gold/40 text-ivory/80 px-10 py-4 rounded-full text-lg hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300"
-          >
-            גלה עוד ↓
-          </a>
+          <MagneticButton strength={0.3}>
+            <a
+              href="#contact"
+              className="block bg-gold text-piano-black font-bold px-10 py-4 rounded-full text-lg hover:bg-gold-light transition-all duration-300 shadow-lg animate-[pulse-glow_3s_ease-in-out_infinite]"
+            >
+              קביעת פגישת מפתח חינם
+            </a>
+          </MagneticButton>
+          <MagneticButton strength={0.25}>
+            <a
+              href="#about"
+              className="block border border-gold/40 text-ivory/80 px-10 py-4 rounded-full text-lg hover:border-gold hover:text-gold hover:bg-gold/5 transition-all duration-300"
+            >
+              גלה עוד ↓
+            </a>
+          </MagneticButton>
         </div>
       </div>
 

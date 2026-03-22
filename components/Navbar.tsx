@@ -35,9 +35,12 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#hero"
-          className="text-gold font-black text-xl tracking-wide hover:opacity-80 transition-opacity"
+          className="text-gold font-black text-xl tracking-wide hover:opacity-80 transition-opacity flex items-center gap-2"
         >
-          🎹 אלפא קליד
+          <svg viewBox="0 0 24 24" className="w-6 h-6 fill-gold" aria-hidden="true">
+            <path d="M21 2H3a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h2v3l3-3h13a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zm-7 11h-1v2h-2v-2H9v-2h2V9h2v2h1v2zm4-2h-2V9h2v2z"/>
+          </svg>
+          <span className="font-display">אלפא קליד</span>
         </a>
 
         {/* Desktop nav */}
