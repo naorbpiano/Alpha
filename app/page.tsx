@@ -12,11 +12,13 @@ import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import WhatsAppCTA from "@/components/WhatsAppCTA";
 
 export default function Home() {
   return (
     <>
       <Navbar />
+      <WhatsAppCTA />
       <main className="pt-14">
         <Hero />
         <ScrollReveal>

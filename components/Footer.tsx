@@ -52,6 +52,14 @@ export default function Footer() {
                   📧 naorbpiano@gmail.com
                 </a>
               </li>
+              <li>
+                <a
+                  href="tel:0535212574"
+                  className="hover:text-gold transition-colors duration-200"
+                >
+                  📱 053-521-2574
+                </a>
+              </li>
               <li>📍 פתח תקווה</li>
             </ul>
             {/* Social icons */}
@@ -59,7 +67,7 @@ export default function Footer() {
               {[
                 { href: "#", label: "Facebook", icon: "📘" },
                 { href: "#", label: "Instagram", icon: "📸" },
-                { href: "https://wa.me/", label: "WhatsApp", icon: "💬" },
+                { href: "https://wa.me/972535212574", label: "WhatsApp", icon: "💬" },
               ].map((s) => (
                 <a
                   key={s.label}
