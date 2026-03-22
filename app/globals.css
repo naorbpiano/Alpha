@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-piano-black: #1a1a1a;
+  --color-piano-dark: #2d2d2d;
+  --color-ivory: #f5f0e8;
+  --color-gold: #c9a84c;
+  --color-gold-light: #e6c96a;
+  --color-warm-white: #fdfaf4;
+  --color-warm-gray: #8a8070;
+  --font-heebo: 'Heebo', sans-serif;
+}
+
+:root {
+  --background: #fdfaf4;
+  --foreground: #1a1a1a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, "Segoe UI", Tahoma, Geneva, sans-serif;
+}
