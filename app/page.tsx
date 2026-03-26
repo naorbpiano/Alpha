@@ -6,26 +6,51 @@ import Teachers from "@/components/Teachers";
 import Methodology from "@/components/Methodology";
 import SmallWins from "@/components/SmallWins";
 import LocationHours from "@/components/LocationHours";
+import Lectures from "@/components/Lectures";
 import Gallery from "@/components/Gallery";
 import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
+import WhatsAppCTA from "@/components/WhatsAppCTA";
 
 export default function Home() {
   return (
     <>
       <Navbar />
+      <WhatsAppCTA />
       <main className="pt-14">
         <Hero />
-        <About />
-        <TargetAudience />
-        <Teachers />
-        <Methodology />
-        <SmallWins />
-        <LocationHours />
-        <Gallery />
-        <Testimonials />
-        <ContactForm />
+        <ScrollReveal>
+          <About />
+        </ScrollReveal>
+        <ScrollReveal>
+          <TargetAudience />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Teachers />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Methodology />
+        </ScrollReveal>
+        <ScrollReveal>
+          <SmallWins />
+        </ScrollReveal>
+        <ScrollReveal>
+          <LocationHours />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Lectures />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Gallery />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Testimonials />
+        </ScrollReveal>
+        <ScrollReveal>
+          <ContactForm />
+        </ScrollReveal>
       </main>
       <Footer />
     </>

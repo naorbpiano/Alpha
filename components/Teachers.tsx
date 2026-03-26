@@ -1,87 +1,58 @@
-const teachers = [
-  {
-    name: "נועה לוי",
-    title: "מורה ראשית",
-    credentials: "תואר ראשון במוסיקה, אוניברסיטת תל אביב",
-    experience: "12 שנות ניסיון",
-    specialties: ["ילדים 5–12", "קלאסי", "תיאוריה"],
-    bio: "נועה מאמינה שכל ילד נושא בתוכו מנגינה — תפקידה לעזור לה לצאת החוצה. מתמחה בגישה משחקית לילדים צעירים.",
-  },
-  {
-    name: "יונתן כהן",
-    title: "מורה בכיר",
-    credentials: "תואר שני בביצוע, הקונסרבטוריון",
-    experience: "8 שנות ניסיון",
-    specialties: ["נוער", "ג׳אז", "פופ"],
-    bio: "יונתן מחבר עולמות — מביא לנוער רפרטואר עדכני לצד יסודות קלאסיים מוצקים. הגישה שלו: כיף קודם, טכניקה אחר כך.",
-  },
-  {
-    name: "מיה אברהם",
-    title: "מורה",
-    credentials: "תואר ראשון בחינוך מוסיקלי",
-    experience: "5 שנות ניסיון",
-    specialties: ["ילדים 8–14", "קלאסי", "בגרות מוסיקה"],
-    bio: "מיה מלווה תלמידים לבגרות מוסיקה ומכינה לתחרויות. סבלנותה האינסופית הפכה אותה לאהובה במיוחד על תלמידיה.",
-  },
-  {
-    name: "אורי שפירא",
-    title: "מורה",
-    credentials: "בוגר אקדמיה למוסיקה ירושלים",
-    experience: "6 שנות ניסיון",
-    specialties: ["נוער", "רוק", "קלאסי"],
-    bio: "אורי הוא מוזיקאי מבצע שמחבר בין עולם ההופעות לחינוך. תלמידיו לומדים לנגן מוסיקה שהם אוהבים — כמו שהם שומעים.",
-  },
-];
+import Image from "next/image";
+import SectionHeader from "./SectionHeader";
 
 export default function Teachers() {
   return (
-    <section id="teachers" className="py-20 bg-warm-white">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-14">
-          <p className="text-gold uppercase tracking-widest text-sm font-semibold mb-2">
-            הצוות שלנו
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-piano-black">
-            המורים שלנו
-          </h2>
-          <div className="mt-4 mx-auto w-16 h-1 bg-gold rounded-full" />
-        </div>
+    <section id="teachers" className="py-24 bg-warm-white">
+      <div className="max-w-4xl mx-auto px-6">
+        <SectionHeader eyebrow="הצוות שלנו" title="המורה שלנו" />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {teachers.map((t) => (
-            <div
-              key={t.name}
-              className="bg-ivory rounded-2xl overflow-hidden shadow-sm border border-gold/10 hover:shadow-md transition-shadow flex flex-col"
-            >
-              {/* Photo placeholder */}
-              <div className="bg-piano-dark h-48 flex items-center justify-center text-6xl">
-                🎹
-              </div>
+        <div className="gold-glow-card bg-ivory rounded-3xl overflow-hidden border border-gold/15 flex flex-col md:flex-row">
+          {/* Photo */}
+          <div className="bg-piano-dark md:w-72 min-h-72 flex-shrink-0 relative overflow-hidden">
+            <Image
+              src="https://i.postimg.cc/dtNY3pwC/tmwnh.jpg"
+              alt="נאור — מייסד ומורה ראשי באלפא קליד"
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 288px"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-piano-black/40 to-transparent" />
+          </div>
 
-              <div className="p-5 flex flex-col flex-1">
-                <h3 className="text-lg font-bold text-piano-black">{t.name}</h3>
-                <p className="text-gold text-sm font-semibold mb-2">{t.title}</p>
-                <p className="text-warm-gray text-xs mb-1">{t.credentials}</p>
-                <p className="text-warm-gray text-xs mb-3">{t.experience}</p>
-
-                {/* Specialties */}
-                <div className="flex flex-wrap gap-1.5 mb-3">
-                  {t.specialties.map((s) => (
-                    <span
-                      key={s}
-                      className="bg-gold/15 text-gold text-xs px-2 py-0.5 rounded-full"
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </div>
-
-                <p className="text-warm-gray text-sm leading-relaxed mt-auto">
-                  {t.bio}
-                </p>
-              </div>
+          {/* Info */}
+          <div className="p-9 flex flex-col justify-center gap-5">
+            <div>
+              <h3 className="text-3xl font-black text-gold-gradient inline-block">נאור</h3>
+              <p className="text-gold/80 font-semibold mt-1.5 text-lg">מייסד ומורה ראשי — אלפא קליד</p>
             </div>
-          ))}
+
+            <p className="text-piano-dark leading-relaxed text-lg">
+              נאור הקים את אלפא קליד מתוך אמונה שכל ילד ראוי לחוות הצלחה —
+              לא רק את הגדולה, אלא גם את הקטנה שמתרחשת בכל שיעור. הגישה שלו
+              מבוססת על הקשבה אמיתית לכל תלמיד, מתן כלים להצלחה, ויצירת
+              אווירה שבה כיף לנגן.
+            </p>
+
+            <div className="flex flex-wrap gap-2">
+              {["כל סגנון", "גיל 7–16", "שיעורים פרטניים", "פגישת מפתח חינם"].map((tag) => (
+                <span
+                  key={tag}
+                  className="bg-gold/10 text-gold text-sm px-4 py-1.5 rounded-full font-medium border border-gold/15"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <a
+              href="#contact"
+              className="mt-2 self-start bg-gold text-piano-black font-bold px-7 py-3 rounded-full hover:bg-gold-light transition-all duration-300 shadow-md hover:shadow-lg"
+            >
+              קביעת פגישת מפתח →
+            </a>
+          </div>
         </div>
       </div>
     </section>
