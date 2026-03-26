@@ -31,8 +31,15 @@ export default function ContactForm() {
     return (
       <section id="contact" className="py-24 bg-warm-white">
         <div className="max-w-xl mx-auto px-6 text-center">
-          <div className="text-7xl mb-5 animate-[scale-in_0.5s_ease-out]">🎉</div>
-          <h2 className="text-3xl font-black text-gold-gradient inline-block mb-4">
+          {/* Animated checkmark */}
+          <div className="flex justify-center mb-7">
+            <div className="w-24 h-24 rounded-full bg-gold/10 border-2 border-gold/30 flex items-center justify-center animate-[scale-in_0.5s_cubic-bezier(0.22,1,0.36,1)]">
+              <svg viewBox="0 0 24 24" className="w-12 h-12" fill="none" strokeWidth="2.5" stroke="#c9a84c" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+          </div>
+          <h2 className="font-display text-4xl font-black text-gold-gradient inline-block mb-4">
             קיבלנו את הפרטים שלך!
           </h2>
           <p className="text-warm-gray text-lg leading-relaxed">
@@ -142,8 +149,11 @@ export default function ContactForm() {
             שלח פרטים — לקביעת פגישת המפתח
           </button>
 
-          <p className="text-warm-gray/60 text-xs text-center">
-            🔒 הפרטים שלכם שמורים אצלנו בלבד ולא יועברו לאף גורם שלישי.
+          <p className="text-warm-gray/60 text-xs text-center flex items-center justify-center gap-1.5">
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-warm-gray/50 shrink-0" aria-hidden="true">
+              <path d="M18 8h-1V6A5 5 0 0 0 7 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3.1-9H8.9V6A3.1 3.1 0 0 1 12 2.9 3.1 3.1 0 0 1 15.1 6v2z"/>
+            </svg>
+            הפרטים שלכם שמורים אצלנו בלבד ולא יועברו לאף גורם שלישי.
           </p>
         </form>
       </div>
