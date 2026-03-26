@@ -1,110 +1,117 @@
+"use client";
+
+import { useState } from "react";
 import SectionHeader from "./SectionHeader";
 
-/* Piano key motif for image placeholders */
-const KeyMotif = ({ variant = "dark" }: { variant?: "dark" | "light" }) => (
-  <svg
-    viewBox="0 0 80 120"
-    className="w-full h-full opacity-10"
-    aria-hidden="true"
-    preserveAspectRatio="xMidYMid slice"
-  >
-    {[0,1,2,3,4,5,6,7,8,9].map((i) => (
-      <rect
-        key={i}
-        x={i * 8}
-        y={0}
-        width={7}
-        height={120}
-        rx={1}
-        fill={variant === "dark" ? "#c9a84c" : "#1a1a1a"}
-        opacity={0.8}
-      />
-    ))}
-    {[0,1,3,4,5,7,8].map((i) => (
-      <rect
-        key={`b${i}`}
-        x={i * 8 + 5}
-        y={0}
-        width={5}
-        height={70}
-        rx={1}
-        fill={variant === "dark" ? "#c9a84c" : "#1a1a1a"}
-        opacity={1}
-      />
-    ))}
-  </svg>
-);
-
-const PlayIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-10 h-10 fill-gold/80" aria-hidden="true">
-    <path d="M8 5v14l11-7z"/>
-  </svg>
-);
-
-const CameraIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-9 h-9 fill-gold/50" aria-hidden="true">
-    <path d="M12 15.2A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zm0-8.4a5.2 5.2 0 1 0 0 10.4A5.2 5.2 0 0 0 12 6.8zM20 4h-3.17L15 2H9L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/>
-  </svg>
-);
-
-const items = [
-  { type: "image", label: "שיעור פרטני",       span: "" },
-  { type: "video", label: "הופעת סוף שנה",     span: "" },
-  { type: "image", label: "תלמידה מתרגלת",     span: "" },
-  { type: "image", label: "תרגול בכיתה",       span: "col-span-2 sm:col-span-1" },
-  { type: "video", label: "מיני-קונצרט",       span: "" },
-  { type: "image", label: "תלמיד ומורה",       span: "" },
+/*
+ * Unsplash free photos — browser hotlinking allowed (Unsplash License).
+ * Using <img> tags so the browser fetches directly (server-side requests are blocked by Unsplash CDN).
+ * Photo IDs sourced from unsplash.com/photos/[id]
+ */
+const photos = [
+  {
+    id: "7kck7rSl_Bo",
+    src: "https://images.unsplash.com/photo-7kck7rSl_Bo?w=600&q=80&auto=format&fit=crop",
+    alt: "ילד לומד פסנתר עם מורה",
+    label: "שיעור פרטני",
+    span: "",
+  },
+  {
+    id: "LZ3O2Q4Me0Q",
+    src: "https://images.unsplash.com/photo-LZ3O2Q4Me0Q?w=600&q=80&auto=format&fit=crop",
+    alt: "ילד מנגן בפסנתר",
+    label: "תרגול בכיתה",
+    span: "",
+  },
+  {
+    id: "hWXO-N2VpN8",
+    src: "https://plus.unsplash.com/premium_photo-hWXO-N2VpN8?w=600&q=80&auto=format&fit=crop",
+    alt: "ילדה קטנה מנגנת בפסנתר",
+    label: "תלמידה בשיעור",
+    span: "",
+  },
+  {
+    id: "S4eh9DWTId4",
+    src: "https://images.unsplash.com/photo-S4eh9DWTId4?w=600&q=80&auto=format&fit=crop",
+    alt: "ידיים מנגנות על מקשי פסנתר",
+    label: "אצבעות על המקשים",
+    span: "",
+  },
+  {
+    id: "0aFUSZu_T1o",
+    src: "https://images.unsplash.com/photo-0aFUSZu_T1o?w=600&q=80&auto=format&fit=crop",
+    alt: "ילד עם פסנתר",
+    label: "גיל 7 — פגישת ניסיון",
+    span: "",
+  },
+  {
+    id: "siniz-performance",
+    src: "https://images.unsplash.com/photo-LZ3O2Q4Me0Q?w=600&q=80&auto=format&fit=crop&crop=bottom",
+    alt: "הופעת פסנתר",
+    label: "הופעת סוף שנה",
+    span: "",
+  },
 ];
 
+/* Piano key motif for fallback */
+const PianoFallback = ({ label }: { label: string }) => (
+  <div className="absolute inset-0 bg-piano-dark flex flex-col items-center justify-center gap-3">
+    <svg viewBox="0 0 80 120" className="w-16 h-24 opacity-15" aria-hidden="true">
+      {[0,1,2,3,4,5,6,7,8,9].map((i) => (
+        <rect key={i} x={i * 8} y={0} width={7} height={120} rx={1} fill="#c9a84c" opacity={0.8} />
+      ))}
+      {[0,1,3,4,5,7,8].map((i) => (
+        <rect key={`b${i}`} x={i * 8 + 5} y={0} width={5} height={70} rx={1} fill="#c9a84c" />
+      ))}
+    </svg>
+    <span className="text-ivory/40 text-xs">{label}</span>
+  </div>
+);
+
 export default function Gallery() {
+  const [errors, setErrors] = useState<Record<string, boolean>>({});
+
+  const onError = (id: string) =>
+    setErrors((prev) => ({ ...prev, [id]: true }));
+
   return (
     <section id="gallery" className="py-24 bg-ivory">
       <div className="max-w-5xl mx-auto px-6">
         <SectionHeader eyebrow="רגעים מבית הספר" title="גלריה" />
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-          {items.map((item, i) => (
+          {photos.map((photo) => (
             <div
-              key={i}
-              className={`gold-glow-card relative aspect-square bg-piano-dark rounded-2xl overflow-hidden group ${item.span}`}
+              key={photo.id}
+              className="gold-glow-card relative aspect-square rounded-2xl overflow-hidden group bg-piano-dark"
             >
-              {/* Pattern background */}
-              <div className="absolute inset-0">
-                <KeyMotif variant="dark" />
-              </div>
-
-              {/* Radial glow */}
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{
-                  background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,0.15) 0%, transparent 70%)",
-                }}
-              />
-
-              {/* Content */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-                {item.type === "video" ? <PlayIcon /> : <CameraIcon />}
-                <span className="text-ivory/50 text-xs font-medium tracking-wide mt-1">{item.label}</span>
-              </div>
-
-              {/* Video badge */}
-              {item.type === "video" && (
-                <div className="absolute top-3 right-3 bg-gold/90 text-piano-black text-[10px] font-black px-2.5 py-1 rounded-full tracking-wide">
-                  וידאו
-                </div>
+              {errors[photo.id] ? (
+                <PianoFallback label={photo.label} />
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  onError={() => onError(photo.id)}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
               )}
 
-              {/* Bottom shimmer on hover */}
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold/60 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+              {/* Label overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-piano-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end">
+                <span className="p-4 text-ivory text-sm font-medium">{photo.label}</span>
+              </div>
+
+              {/* Bottom gold shimmer */}
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/60 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </div>
           ))}
         </div>
 
-        {/* Coming soon note */}
         <div className="mt-10 flex items-center justify-center gap-3">
           <span className="block w-12 h-px bg-gold/20" />
           <p className="text-warm-gray/50 text-sm text-center">
-            תמונות וסרטונים יועלו בקרוב — בינתיים, בואו לפגישת המפתח ותראו בעצמכם
+            תמונות נוספות יועלו בקרוב — בינתיים, בואו לפגישת המפתח ותראו בעצמכם
           </p>
           <span className="block w-12 h-px bg-gold/20" />
         </div>

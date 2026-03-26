@@ -66,7 +66,7 @@ export default function CustomCursor() {
       <div
         ref={dotRef}
         aria-hidden="true"
-        className="fixed top-0 right-0 z-[9999] pointer-events-none will-change-transform hidden md:block"
+        className="fixed top-0 left-0 z-[9999] pointer-events-none will-change-transform hidden md:block"
         style={{
           width: 8,
           height: 8,
@@ -81,7 +81,7 @@ export default function CustomCursor() {
       <div
         ref={ringRef}
         aria-hidden="true"
-        className="fixed top-0 right-0 z-[9998] pointer-events-none will-change-transform hidden md:block"
+        className="fixed top-0 left-0 z-[9998] pointer-events-none will-change-transform hidden md:block"
         style={{
           width: isPointer ? 48 : 40,
           height: isPointer ? 48 : 40,
